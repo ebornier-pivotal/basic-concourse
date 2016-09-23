@@ -1,0 +1,7 @@
+---
+applications:
+- name: basic-concourse 
+  hosts:
+    - basic-concourse 
+  memory: 512MB
+  instances: 1
