@@ -1,0 +1,34 @@
+---
+resources:
+
+- name: basic-concourse-repo
+  type: git
+  source:
+    uri: https://github.com/ebornier-pivotal/basic-concourse.git 
+
+- name: cf
+  type: cf
+  source:
+    api: {{cf-api}}
+    username: {{cf-username}}
+    password: {{cf-password}}
+    organization: {{cf-organization}}
+    space: {{cf-space}}
+    skip_cert_check: true
+
+jobs:
+
+
+- name: basic-concourse 
+  serial: true
+  public: true # cf does not shows auth. logs so it is ok
+  plan:
+  - get: basic-concourse-repo
+    trigger: true
+  - task: build
+    file: basic-concourse-repo/ci/build.yml
+  - put: cf
+    params:
+      manifest: basic-concourse-repo/manifest.yml
+      path: build/basic-concourse-0.0.1-SNAPSHOT.jar
+

@@ -1,0 +1,16 @@
+---
+platform: linux
+
+image_resource:
+  type: docker-image
+  source:
+    repository: java
+    tag: '8'
+
+inputs:
+- name: basic-concourse-repo
+outputs:
+- name: build 
+
+run:
+  path: basic-concourse-repo/ci/build.sh 
