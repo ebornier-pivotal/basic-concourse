@@ -1,4 +1,6 @@
 #!/bin/sh
+export http_proxy=http://10.12.9.165:8080
+export https_proxy=http://10.12.9.165:8080
 # ----------------------------------------------------------------------------
 # Licensed to the Apache Software Foundation (ASF) under one
 # or more contributor license agreements.  See the NOTICE file
