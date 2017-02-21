@@ -9,8 +9,9 @@ image_resource:
 
 inputs:
 - name: basic-concourse-repo
+- name: basic-concourse-release
 outputs:
 - name: build 
 
 run:
-  path: basic-concourse-repo/ci/build.sh 
+  path: basic-concourse-repo/ci/build-release.sh 

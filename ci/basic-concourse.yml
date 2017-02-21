@@ -44,6 +44,8 @@ jobs:
   public: true
   serial: true
   plan:
+  - get: basic-concourse-repo
+    trigger: true
   - get: basic-concourse-release 
     params:
       include_source_tarball: true
