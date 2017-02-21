@@ -31,7 +31,6 @@ resources:
   source:
     user: ebornier-pivotal 
     check: true
-    access_token: {{access-token}}
     repository: basic-concourse 
     include_source_tarball: true
     include_source_zip: true
@@ -49,6 +48,7 @@ jobs:
     file: basic-concourse-repo/ci/build.yml
   - put: cf-dev
     params:
+      current_app_name: basic-concourse
       manifest: basic-concourse-repo/manifest.yml
       path: build/basic-concourse-0.0.1-SNAPSHOT.jar
 
@@ -65,5 +65,6 @@ jobs:
     file: basic-concourse-repo/ci/build-release.yml
   - put: cf-prod
     params:
+      current_app_name: basic-concourse
       manifest: build/manifest.yml
       path: build/basic-concourse-0.0.1-SNAPSHOT.jar
