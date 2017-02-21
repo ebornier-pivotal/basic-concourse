@@ -6,14 +6,24 @@ resources:
   source:
     uri: https://github.com/ebornier-pivotal/basic-concourse.git 
 
-- name: cf
+- name: cf-dev
   type: cf
   source:
     api: {{cf-api}}
     username: {{cf-username}}
     password: {{cf-password}}
     organization: {{cf-organization}}
-    space: {{cf-space}}
+    space: dev 
+    skip_cert_check: true
+
+- name: cf-prod
+  type: cf
+  source:
+    api: {{cf-api}}
+    username: {{cf-username}}
+    password: {{cf-password}}
+    organization: {{cf-organization}}
+    space: prod 
     skip_cert_check: true
 
 - name: basic-concourse-release
@@ -35,7 +45,7 @@ jobs:
     trigger: true
   - task: build
     file: basic-concourse-repo/ci/build.yml
-  - put: cf
+  - put: cf-dev
     params:
       manifest: basic-concourse-repo/manifest.yml
       path: build/basic-concourse-0.0.1-SNAPSHOT.jar
@@ -50,7 +60,7 @@ jobs:
       include_source_tarball: true
   - task: build
     file: basic-concourse-repo/ci/build-release.yml
-  - put: cf
+  - put: cf-prod
     params:
       manifest: build/manifest.yml
       path: build/basic-concourse-0.0.1-SNAPSHOT.jar
