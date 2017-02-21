@@ -30,6 +30,8 @@ resources:
   type: github-release
   source:
     user: ebornier-pivotal 
+    check: true
+    access_token: b7b1c6066d9937173bc792478b67e84ccabfd917
     repository: basic-concourse 
     include_source_tarball: true
     include_source_zip: true
