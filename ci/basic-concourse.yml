@@ -45,7 +45,6 @@ jobs:
   serial: true
   plan:
   - get: basic-concourse-repo
-    trigger: true
   - get: basic-concourse-release 
     params:
       include_source_tarball: true
@@ -53,5 +52,5 @@ jobs:
     file: basic-concourse-repo/ci/build-release.yml
   - put: cf
     params:
-      manifest: build/basic-concourse-release/manifest.yml
+      manifest: build/manifest.yml
       path: build/basic-concourse-0.0.1-SNAPSHOT.jar
