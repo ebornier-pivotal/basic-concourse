@@ -19,9 +19,10 @@ resources:
 - name: basic-concourse-release
   type: github-release
   source:
-    user: ebornier-pivotal
+    user: ebornier-pivotal 
     repository: basic-concourse 
     include_source_tarball: true
+    include_source_zip: true
 
 jobs:
 
@@ -44,14 +45,11 @@ jobs:
   serial: true
   plan:
   - get: basic-concourse-release 
-  - task: ls
-    config:
-      platform: linux
-      image_resource:
-        type: docker-image
-        source: {repository: ubuntu, tag: "14.04"}
-      inputs:
-      - name: basic-concourse-release 
-      run:
-        path: ls
-        args: ["-opR", "."]
+    params:
+      include_source_tarball: true
+  - task: build
+    file: basic-concourse-repo/ci/build-release.yml
+  - put: cf
+    params:
+      manifest: build/basic-concourse-release/manifest.yml
+      path: build/basic-concourse-0.0.1-SNAPSHOT.jar
