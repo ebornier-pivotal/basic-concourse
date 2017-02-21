@@ -1,6 +1,7 @@
 ---
 applications:
 - name: basic-concourse 
+  random-route: true
   hosts:
     - basic-concourse 
   memory: 512MB
