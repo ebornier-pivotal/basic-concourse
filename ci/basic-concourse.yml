@@ -63,7 +63,7 @@ jobs:
   - put: cf-dev
     params:
       current_app_name: basic-concourse-dev
-      manifest: basic-concourse-repo/manifest.yml
+      manifest: basic-concourse-repo/manifest-dev.yml
       path: build/basic-concourse-0.0.1-SNAPSHOT.jar
   - put: slack-alert
     params:
@@ -71,7 +71,7 @@ jobs:
       text: |
         The build had a result. Check it out at:
         https://concourse.cf.semea.piv/builds/$BUILD_ID
-        The application is now available in development.
+        The application is now available in development at https://basic-concourse-dev.cfapps.io
 
 
 - name: deploy-basic-concourse-release
@@ -88,5 +88,5 @@ jobs:
   - put: cf-prod
     params:
       current_app_name: basic-concourse
-      manifest: build/manifest.yml
+      manifest: build/manifest-prod.yml
       path: build/basic-concourse-0.0.1-SNAPSHOT.jar
