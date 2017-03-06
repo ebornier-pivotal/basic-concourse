@@ -1,8 +1,6 @@
 ---
 applications:
 - name: basic-concourse 
-  random-route: true
-  hosts:
-    - basic-concourse-${random-word}  
+  route: basic-concourse-dev
   memory: 512MB
   instances: 1
