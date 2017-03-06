@@ -1,4 +1,12 @@
 ---
+
+resource_types:
+- name: slack-notification
+  type: docker-image
+  source:
+    repository: cfcommunity/slack-notification-resource
+    tag: latest
+
 resources:
 
 - name: basic-concourse-repo
@@ -35,6 +43,12 @@ resources:
     include_source_tarball: true
     include_source_zip: true
 
+- name: slack-alert
+  type: slack-notification
+  source:
+    url: https://hooks.slack.com/services/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 
+
+
 jobs:
 
 
@@ -48,9 +62,17 @@ jobs:
     file: basic-concourse-repo/ci/build.yml
   - put: cf-dev
     params:
-      current_app_name: basic-concourse
+      current_app_name: basic-concourse-dev
       manifest: basic-concourse-repo/manifest.yml
       path: build/basic-concourse-0.0.1-SNAPSHOT.jar
+  - put: slack-alert
+    params:
+      channel: '#circle-of-code'
+      text: |
+        The build had a result. Check it out at:
+        https://concourse.cf.semea.piv/builds/$BUILD_ID
+        The application is now available in development.
+
 
 - name: deploy-basic-concourse-release
   public: true
