@@ -17,6 +17,6 @@ public class BasicConcourseApplication {
 
     @RequestMapping("/")
     public String index() {
-        return "Greetings from FCA!";
+        return "Greetings from Pivotal!";
     }
 }
