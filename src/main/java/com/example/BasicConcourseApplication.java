@@ -21,6 +21,6 @@ public class BasicConcourseApplication {
     @RequestMapping("/")
     public String index() {
        log.info("Handling greetings"); 
-       return "{\"Greetings from System U!\"}";
+       return "{\"Greetings from X!\"}";
     }
 }
