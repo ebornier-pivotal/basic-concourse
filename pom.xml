@@ -9,7 +9,7 @@
 	<packaging>jar</packaging>
 
 	<name>basic-concourse</name>
-	<description>Demo project for Spring Boot</description>
+	<description>Demo CI-CD project with Spring boot</description>
 	<parent>
 		<groupId>org.springframework.boot</groupId>
 		<artifactId>spring-boot-starter-parent</artifactId>
