@@ -15,13 +15,13 @@ import org.springframework.security.config.annotation.method.configuration.Enabl
 
 
 @SpringBootApplication
-@EnableOAuth2Sso
+//@EnableOAuth2Sso
 @RestController
 //@Configuration
 //@EnableAutoConfiguration
 //@ComponentScan
-@EnableResourceServer
-@EnableGlobalMethodSecurity(prePostEnabled = true, proxyTargetClass = true)
+//@EnableResourceServer
+//@EnableGlobalMethodSecurity(prePostEnabled = true, proxyTargetClass = true)
 public class BasicConcourseApplication {
 
   private static Logger log = LoggerFactory.getLogger(BasicConcourseApplication.class);
@@ -37,7 +37,7 @@ public class BasicConcourseApplication {
     public String index() throws Exception {
        log.info("Handling greetings"); 
         
- return "{\"Greetings from DF!\"}";    
+ return "Greetings from DF";    
 }    
 
 
