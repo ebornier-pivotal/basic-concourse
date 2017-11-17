@@ -27,9 +27,9 @@
 		<!-- [PIPELINE] -->
 		<distribution.management.release.id>artifactory-local</distribution.management.release.id>
 		<!-- [PIPELINE] -->
-		<distribution.management.release.url>http://localhost:8081/artifactory/libs-release-local</distribution.management.release.url>
+		<distribution.management.release.url>http://34.240.144.119/artifactory/libs-release-local</distribution.management.release.url>
 		<!-- [PIPELINE] -->
-		<repo.with.jars>http://localhost:8081/artifactory/libs-release-local</repo.with.jars>
+		<repo.with.jars>http://34.240.144.119/artifactory/libs-release-local</repo.with.jars>
 	</properties>
 
 	<dependencies>
