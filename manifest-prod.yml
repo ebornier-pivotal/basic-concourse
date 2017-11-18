@@ -2,5 +2,5 @@
 applications:
 - name: basic-concourse 
   route: basic-concourse-prod
-  memory: 512MB
+  memory: 1G 
   instances: 1
