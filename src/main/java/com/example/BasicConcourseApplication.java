@@ -36,8 +36,7 @@ public class BasicConcourseApplication {
     @RequestMapping("/")
     public String index() throws Exception {
        log.info("Handling greetings"); 
-        
- return "Greetings from DF";    
+       return "Greetings from DF V2";    
 }    
 
 
