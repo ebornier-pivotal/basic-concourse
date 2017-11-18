@@ -1,6 +1,6 @@
 ---
 applications:
 - name: basic-concourse 
-  route: basic-concourse-dev
+  route: basic-concourse-test
   memory: 1G 
   instances: 1

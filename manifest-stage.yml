@@ -1,6 +1,6 @@
 ---
 applications:
 - name: basic-concourse 
-  route: basic-concourse
+  route: basic-concourse-stage
   memory: 1G 
   instances: 1
