@@ -12,7 +12,8 @@ import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.security.config.annotation.method.configuration.GlobalMethodSecurityConfiguration;
 import org.springframework.security.oauth2.config.annotation.web.configuration.EnableResourceServer;
 import org.springframework.security.config.annotation.method.configuration.EnableGlobalMethodSecurity;
-
+import org.springframework.boot.actuate.metrics.CounterService;
+import org.springframework.beans.factory.annotation.Autowired;
 
 @SpringBootApplication
 //@EnableOAuth2Sso
@@ -26,6 +27,9 @@ public class BasicConcourseApplication {
 
   private static Logger log = LoggerFactory.getLogger(BasicConcourseApplication.class);
     
+    @Autowired
+    CounterService counterService;
+
 
 
     public static void main(String[] args) {
@@ -35,7 +39,8 @@ public class BasicConcourseApplication {
 
     @RequestMapping("/")
     public String index() throws Exception {
-       log.info("Handling greetings"); 
+       log.info("Handling greetings");
+       counterService.increment("spring.paris.attendees.view");
        return "Greetings from DF V2";    
 }    
 
